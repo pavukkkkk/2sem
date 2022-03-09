@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>16.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
 		<key>2sem.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,17 +17,37 @@
 		<key>class.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>1</integer>
 		</dict>
 		<key>else.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>ex.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>ex1.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>inheritance.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>6</integer>
+		</dict>
+		<key>lists.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
 		</dict>
 		<key>load_IV_5.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>5</integer>
 		</dict>
 		<key>rec_III_16.xcscheme_^#shared#^_</key>
 		<dict>
@@ -32,12 +57,12 @@
 		<key>rec_II_18.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>7</integer>
 		</dict>
 		<key>temp.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -48,6 +73,16 @@
 			<true/>
 		</dict>
 		<key>0EBC976127C5369300AE6F49</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0EBC977827D4FAC900AE6F49</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0EBC97A427D7B3A600AE6F49</key>
 		<dict>
 			<key>primary</key>
 			<true/>

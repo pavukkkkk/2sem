@@ -1,3 +1,4 @@
+#include "lists.hpp"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -128,22 +129,26 @@ public:
         }
         cout << endl;
     }
-    int DeleteDuplicate() {
-        int k = 0;
-        for (int i = 1; i < GetLength(); i++) {
-            if (Get(i) == Get(i + 1)) {
-                Remove(i);
-                k++;
-                i--;
+   
+    int Getfirstplus() {
+        int k=0;
+        Element* cur = head;
+        if (!Empty() ){
+        while ( cur->inf <0 ){
+            k++;
+            if (cur->next == NULL){
+                break;
             }
+            cur = cur->next;
+        }
         }
         return k;
     }
 };
 
-class Stack {
+template <class Item> class Stack {
     struct Element {
-        int inf;
+        Item inf;
         Element* next;
         Element(int x, Element* p) : inf(x), next(p) {}
     };
@@ -261,6 +266,7 @@ public:
             return i;
         }
     }
+    
     void InsertLeft(int index, Item data) {
         if ((index < 1) || (index > size + 1)) {
             throw DoubleListException("Exception: insert - double-linked list error");
@@ -350,5 +356,19 @@ public:
             cout << cur->inf << ' ';
         }
         cout << endl;
+    }
+    int Getfirstplus() {
+        int k=0;
+        Element* cur = head;
+        if (!Empty() ){
+        while ( cur->inf <0 ){
+            k++;
+            if (cur->next == NULL){
+                break;
+            }
+            cur = cur->next;
+        }
+        }
+        return k;
     }
 };
