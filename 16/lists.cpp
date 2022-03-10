@@ -1,7 +1,11 @@
 #include "lists.hpp"
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
+
+
+
 
 class StackException {
 private:
@@ -49,6 +53,7 @@ template <class Item> class List {
         Element(Item x) :inf(x), next(0) {};
     };
     Element* head;
+    Element* tail;
     int size;
     Element* Find(int index) {
         if ((index < 1) || (index > size)) {
@@ -62,8 +67,32 @@ template <class Item> class List {
             return cur;
         }
     }
+    void Read1(Element* cur, ifstream &in){
+        
+            Item value;
+
+        if (in>>value){
+            
+            Element* newPtr = new Element(value);
+            size ++;
+            if (cur == NULL) {
+            
+                head = newPtr;
+                tail = newPtr;
+            }
+            else {
+                newPtr->next = cur->next;
+                cur->next = newPtr;
+                if (cur == tail) {
+                    tail = newPtr;
+                
+                }}
+
+        Read1(newPtr,in);
+            }
+        }
 public:
-    List() : head(0), size(0) {}
+    List() : head(0), size(0),tail(0) {}
     ~List() {
         while (!Empty()) {
             Remove(1);
@@ -91,7 +120,11 @@ public:
         }
         else {
             Element* newPtr = new Element(data);
-            size = GetLength() + 1;
+            
+            size++;
+            if (index == size){
+                tail=newPtr;
+            }
             if (index == 1) {
                 newPtr->next = head;
                 head = newPtr;
@@ -102,6 +135,36 @@ public:
                 prev->next = newPtr;
             }
         }
+        
+    }
+    void Read(int index, ifstream &in){
+        if ((index < 1 && head != NULL) || (index > size + 1)) {
+           
+        throw DoubleListException("Exception: insert ó double-linked list error");
+    }
+        
+        else{
+            Element* cur = Find(index);
+            
+            Read1(cur, in);
+        }
+    }
+    
+    void Pushback(Item data){
+        size++;
+        Element* newPtr = new Element(data);
+        if (size ==1){
+            head = newPtr;
+            tail = newPtr;
+           
+        }
+        else{
+        tail->next = newPtr;
+            tail=newPtr;}
+                    
+                
+            
+        
     }
     void Remove(int index) {
         if ((index < 1) || (index > size)) {
@@ -243,6 +306,71 @@ template <class Item> class DoubleLinkedList {
             return cur;
         }
     }
+    void Read1(Element* cur, ifstream &in){
+        
+            Item value;
+
+        if (in>>value){
+            Element* newPtr = new Element(value);
+            size ++;
+            if (cur == NULL) {
+            
+                head = newPtr;
+                tail = newPtr;
+            }
+            else {
+                newPtr->next = cur->next;
+                newPtr->prev = cur;
+                cur->next = newPtr;
+                if (cur == tail) {
+                    tail = newPtr;
+                }
+                else {
+                    newPtr->next->prev = newPtr;
+                }}
+
+        Read1(newPtr,in);
+            }
+        }
+    void Sort1(Element* cur,const  Element* l ){
+        if (l != NULL){
+            Element* newPtr = new Element(l->inf);
+            size ++;
+            if (cur == NULL) {
+                head = newPtr;
+                tail = newPtr;
+                cur=newPtr;
+            }
+            else if (l->inf <0) {
+                if (cur->inf>=0){
+                    newPtr->next = cur;
+                    newPtr->prev = cur->prev;
+                    cur->prev = newPtr;
+                    head=newPtr;
+                    cur=cur->prev;
+                }
+                else{
+                newPtr->next = cur->next;
+                newPtr->prev = cur;
+                cur->next = newPtr;
+                if (cur == tail) {
+                    tail = newPtr;
+                }
+                else {
+                    newPtr->next->prev = newPtr;
+                }
+                    cur=cur->next;
+                }
+
+            }
+            else{
+                Pushback(l->inf);
+                size--;
+            }
+
+        Sort1(cur, l->next);
+            }
+        }
 public:
     DoubleLinkedList() : head(0), tail(0), size(0) {}
     ~DoubleLinkedList() {
@@ -317,13 +445,14 @@ public:
             }
         }
     }
-    void Remove(int index) {
+  double Remove(int index) {
         if ((index < 1) || (index > size)) {
             throw DoubleListException("Exception: remove - double - linked list error");
         }
         else {
             Element* cur = Find(index);
             --size;
+            double in=cur->inf;
             if (size == 0) {
                 head = NULL;
                 tail = NULL;
@@ -343,6 +472,7 @@ public:
             cur->next = NULL;
             cur->prev = NULL;
             delete cur;
+            return in;
         }
     }
     void PrintLeftToRight() {
@@ -357,18 +487,54 @@ public:
         }
         cout << endl;
     }
-    int Getfirstplus() {
-        int k=0;
+    Element* Getfirstplus() {
         Element* cur = head;
         if (!Empty() ){
         while ( cur->inf <0 ){
-            k++;
             if (cur->next == NULL){
                 break;
             }
             cur = cur->next;
         }
         }
-        return k;
+        return cur;
     }
+    
+    void Read(int index, ifstream &in){
+        if ((index < 1 && head != NULL) || (index > size + 1)) {
+           
+        throw DoubleListException("Exception: insert ó double-linked list error");
+    }
+        
+        else{
+            Element* cur = Find(index);
+            
+            Read1(cur, in);
+        }
+    }
+    
+    
+    void Pushback(Item data){
+        size++;
+        Element* newPtr = new Element(data);
+        if (size ==1){
+            head = newPtr;
+            tail = newPtr;
+        }
+        else{
+        newPtr->prev = tail;
+        tail->next = newPtr;
+            tail=newPtr;}
+                    
+                
+            
+        
+    }
+    void Sort( const DoubleLinkedList& l2){
+       
+        Sort1(Getfirstplus(),l2.head);
+        
+        
+    }
+    
 };
