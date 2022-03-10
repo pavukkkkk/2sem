@@ -10,105 +10,110 @@ class Persona
 protected:
     string date;
 public:
-    
-    public:
-    Persona(): date(""){};
-    Persona(string x): date(x){};
-    virtual void inputc()=0;
-    virtual void Show()=0;
-    int  Age(){
-        string month =date.substr(date.find('.')+1,date.find('.'));
-        string day =date.substr(0,date.find('.'));
-        string year =date.substr(date.rfind('.')+1);
-        
-        
-        if (month >"03" || (month =="03" && day >= "06")){
-            return 2021-stoi(year);
-    }
-        else{
-            return 2021 +1 - stoi(year);
+
+public:
+    Persona() : date("") {};
+    Persona(string x) : date(x) {};
+    virtual void inputc() = 0;
+    virtual void Show() = 0;
+    int  Age() {
+        string month = date.substr(date.find('.') + 1, date.find('.'));
+        string day = date.substr(0, date.find('.'));
+        string year = date.substr(date.rfind('.') + 1);
+
+
+        if (month > "03" || (month == "03" && day >= "06")) {
+            return 2021 - stoi(year);
+        }
+        else {
+            return 2021 + 1 - stoi(year);
         }
 
     }
 
 };
 
-class Enrolee: public Persona
+class Enrolee : public Persona
 {
 protected:
     string surname;
     string fac;
 public:
-    Enrolee():Persona(), fac(""), surname(""){
-        
+    Enrolee() :Persona(), fac(""), surname("") {
+
     }
-    Enrolee(string x, string y, string z):Persona(x), fac(y), surname(z){
-        
+    Enrolee(string x, string y, string z) :Persona(x), fac(y), surname(z) {
+
     }
-    void inputc(){
-        in>>date>>surname>>fac;
-       
-       }
-    void Show(){
-        cout<<date<<" "<<surname<<" "<<fac<<endl;
-        
+    void inputc() {
+        in >> date >> surname >> fac;
+
     }
-    
-    
+    void Show() {
+        cout << date << " " << surname << " " << fac << endl;
+
+    }
+
+
 };
 
-class Student: public Enrolee
+class Student : public Enrolee
 {
 protected:
     int course;
 public:
-    Student():Enrolee(), course(0){
+    Student() :Enrolee(), course(0) {
     }
-    Student(string x, string y, string z, int a): Enrolee(x,y,z), course(a){
+    Student(string x, string y, string z, int a) : Enrolee(x, y, z), course(a) {
     }
-    void inputc(){
-        in>>date>>surname>>fac>>course;
-       }
-    void Show(){
-        cout<<date<<" "<<surname<<" "<<fac<<" "<<course<<endl;
+    void inputc() {
+        in >> date >> surname >> fac >> course;
+    }
+    void Show() {
+        cout << date << " " << surname << " " << fac << " " << course << endl;
     }
 };
 
 
-class Teacher: public Enrolee
+class Teacher : public Enrolee
 {
 protected:
     string post;
     int experience;
 public:
-    Teacher():Enrolee(), post(""), experience(0){
+    Teacher() :Enrolee(), post(""), experience(0) {
     }
-    Teacher (string x, string y, string z, string a, int b): Enrolee(x,y,z),  post(a), experience(b){
+    Teacher(string x, string y, string z, string a, int b) : Enrolee(x, y, z), post(a), experience(b) {
     }
-    void inputc(){
-        in>>date>>surname>>fac>>post>>experience;
-       }
-    void Show(){
-        cout<<date<<" "<<surname<<" "<<fac<<" "<<post<<" "<<experience<<endl;
+    void inputc() {
+        in >> date >> surname >> fac >> post >> experience;
+    }
+    void Show() {
+        cout << date << " " << surname << " " << fac << " " << post << " " << experience << endl;
     }
 };
 
-    
+
 int main() {
-    Persona *persons[100];
-    for(int i=0; i<6;i++){
-        if (i<3){
-            persons[i]=new Enrolee();
+    Persona* persons[100];
+    string s;
+ 
+    int i = 0;
+    while (i < 6) {
+        in >> s;
+       
+        if (s == "e") {
+            persons[i] = new Enrolee();
         }
-        else{
-            persons[i]=new Teacher();
+        else if (s == "t") {
+            persons[i] = new Teacher();
         }
-    }
-    int i=0;
-    while (i<6) {
+        else if (s == "s") {
+            persons[i] = new Student();
+        }
         persons[i]->inputc();
         persons[i]->Show();
-        cout<<persons[i]->Age()<<endl;
+        cout << persons[i]->Age() << endl;
         i++;
     }
     in.close();
