@@ -6,9 +6,6 @@ ifstream in("input.txt");
 ifstream in1("input.txt");
 ifstream in2("input.txt");
 using namespace std;
-
-
-
 int main(){
     Stack<double> st1, st2, st0,st10;
         Queue<double> q1, q2,q0,q10;
@@ -24,16 +21,10 @@ int main(){
     l3.PrintLeftToRight();
     cout<<endl<<endl;
 
-
-
-
         while (in >> value) {
             k++;
             st10.Push(value);
             q10.Put(value);
-
-
-
         }
 
         for (int i = 1; i <= k; i++) {
@@ -81,8 +72,6 @@ int main(){
             }
             else
                 st1.Push(value);
-
-
         }
         while (!q2.Empty())
         {
@@ -114,6 +103,5 @@ int main(){
         in.close();
     in2.close();
     in1.close();
-        
-  
+
 }
