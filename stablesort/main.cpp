@@ -97,3 +97,56 @@ int main() {
 
  Program ended with exit code: 0
  */
+
+
+
+
+#include <iostream>
+//#include <string>
+//#include <tuple>
+//#include <vector>
+//#include <algorithm>
+//using namespace std;
+//#include <iostream>
+//
+//class point {
+//public:
+//
+//    int x;
+//    int y;
+//    point(int x, int y) : x(x), y(y) {}
+//};
+//
+//bool uslovie(point a) {
+//    return (a.x > 0);
+//        
+//
+// 
+//}
+//    int main() {
+//
+//
+//    vector<point> v;
+//  
+//    int x, y;
+//    int n;
+//    cin >> n;
+//
+//        for (int i = 0; i < n; i++)
+//        {
+//            cin >> x >> y;
+//            point a(x, y);
+//            v.push_back(a);
+//        }
+//
+//        v.erase(remove_if(v.begin(), v.end(), uslovie),v.end());
+//
+//        for (auto i : v) {
+//
+//            cout << i.x << " " << i.y << endl;
+//
+//        }
+//    
+//  
+//    }
+
