@@ -61,6 +61,7 @@ public:
         return vec[vec.size()/2];
     }
     void doble(int n){
+        //переделать цикл
         const vector <Goods>::iterator Iterv=vec.end();
         for (auto iter = vec.begin(); iter != Iterv; iter++)
         {
