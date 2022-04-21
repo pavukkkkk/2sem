@@ -4,110 +4,113 @@
 #include <string>
 using namespace std;
 
-class Goods{
+class Goods {
     string name;
     int n;
 public:
-    void changen(int n){
-        this->n=n;
+    void changen(int n) {
+        this->n = n;
     }
-    string getname(){
+    string getname() {
         return name;
     }
-    int getn(){
+    int getn() {
         return n;
     }
-    Goods(): name(""),n(0){}
-    Goods(string s, int w): name(s),n(w){}
+    Goods() : name(""), n(0) {}
+    Goods(string s, int w) : name(s), n(w) {}
 };
 
-class GoodsList{
+class GoodsList {
     list<Goods> lst;
 public:
-    void doble(int n){
-   
-    for (auto iter = lst.begin(); iter != lst.end(); iter++)
+    void doble(int n) {
+
+        for (auto iter = lst.begin(); iter != lst.end(); iter++)
         {
-            if ((*iter).getn()>n){
-                (*iter).changen(n/2);
-                lst.insert(iter, Goods((*iter).getname(),n/2));
-            
+            if ((*iter).getn() > n) {
+                (*iter).changen(n / 2);
+                
+                lst.insert(iter, Goods((*iter).getname(), n / 2));
+                
             }
         }
     }
-    void push(Goods a){
+    void push(Goods a) {
         lst.push_back(a);
-        
+
     }
-    void print(){
-        for(auto i: lst){
-                
-                cout<<i.getname()<<" "<<i.getn();
-            cout<<endl;
-            
-            }
+    void print() {
+        for (auto i : lst) {
+
+            cout << i.getname() << " " << i.getn();
+            cout << endl;
+
+        }
     }
 };
 
-class GoodsVec{
+class GoodsVec {
 
     vector<Goods> vec;
 public:
-    void push(Goods a){
+    void push(Goods a) {
         vec.push_back(a);
-        
+
     }
-    Goods middle(){
-        return vec[vec.size()/2];
+    Goods middle() {
+        return vec[vec.size() / 2];
     }
-    void doble(int n){
-        //переделать цикл
-        const vector <Goods>::iterator Iterv=vec.end();
-        for (auto iter = vec.begin(); iter != Iterv; iter++)
+    void doble(int n) {
+
+        const vector <Goods>::iterator Iterv = vec.end();
+        for (int i=0; i<n; i++)
         {
-            if ((*iter).getn()>n){
-                (*iter).changen(n/2);
-                vec.push_back(Goods((*iter).getname(),n/2));
-            
+            if (vec[i].getn() > n) {
+                vec[i].changen(n / 2);
+                vec.push_back(Goods((vec[i]).getname(), n / 2));
+
             }
         }
     }
-    void print(){
-        for(auto i: vec){
-                
-                cout<<i.getname()<<" "<<i.getn();
-            cout<<endl;
-            
-            }
+    void print() {
+        for (auto i : vec) {
+
+            cout << i.getname() << " " << i.getn();
+            cout << endl;
+
+        }
     }
 };
 
 
 
 int main() {
-    GoodsList l;
+   GoodsList l;
     GoodsVec v;
     int a;
     string s;
-    int n,k;
-    cin>>k>>n;
-    for (int i=0;i<k;i++){
+    int n, k;
+    cin >> k >> n;
+    for (int i = 0; i < k; i++) {
         {
-            cin>>s>>a;
-            Goods b(s,a);
-       l.push(b);
+            cin >> s >> a;
+            Goods b(s, a);
+            l.push(b);
             v.push(b);
-        
+
         }
-      
+
     }
+    
     l.doble(n);
     v.doble(n);
     l.print();
     v.print();
-    cout<<v.middle().getname()<<" "<<v.middle().getn()<<endl;
+    cout << v.middle().getname() << " " << v.middle().getn() << endl;
+ 
     return 0;
-}
+} 
 /*
  5 4
  a 2
