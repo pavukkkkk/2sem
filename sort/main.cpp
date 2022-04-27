@@ -107,6 +107,8 @@ int main()
     pr1nt(m1, i );
     pr1nt(m2, i );
     pr1nt(m3, i );
+    in.close();
+    out.close();
 }
 
 //131

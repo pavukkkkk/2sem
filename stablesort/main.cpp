@@ -50,12 +50,14 @@ int main() {
     cout<<endl;
     sort(vec1.begin(),vec1.end(), isLower);
     stable_sort(vec2.begin(),vec2.end(), isLower);
+    cout<<"sort: "<<endl;
     for(auto i: vec1){
             
             i.print();
         
         }
     cout<<endl;
+    cout<<"stable_sort: "<<endl;
     for(auto i: vec2){
             
            i.print();
@@ -101,52 +103,5 @@ int main() {
 
 
 
-#include <iostream>
-//#include <string>
-//#include <tuple>
-//#include <vector>
-//#include <algorithm>
-//using namespace std;
-//#include <iostream>
-//
-//class point {
-//public:
-//
-//    int x;
-//    int y;
-//    point(int x, int y) : x(x), y(y) {}
-//};
-//
-//bool uslovie(point a) {
-//    return (a.x > 0);
-//        
-//
-// 
-//}
-//    int main() {
-//
-//
-//    vector<point> v;
-//  
-//    int x, y;
-//    int n;
-//    cin >> n;
-//
-//        for (int i = 0; i < n; i++)
-//        {
-//            cin >> x >> y;
-//            point a(x, y);
-//            v.push_back(a);
-//        }
-//
-//        v.erase(remove_if(v.begin(), v.end(), uslovie),v.end());
-//
-//        for (auto i : v) {
-//
-//            cout << i.x << " " << i.y << endl;
-//
-//        }
-//    
-//  
-//    }
+
 

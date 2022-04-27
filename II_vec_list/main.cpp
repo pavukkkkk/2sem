@@ -105,7 +105,9 @@ int main() {
     
     l.doble(n);
     v.doble(n);
+    cout<<"new list:"<<endl;
     l.print();
+    cout<<"new vector:"<<endl;
     v.print();
     cout << v.middle().getname() << " " << v.middle().getn() << endl;
  
@@ -118,6 +120,7 @@ int main() {
  c 4
  d 5
  e 6
+ new list:
  a 2
  b 3
  c 4
@@ -125,6 +128,7 @@ int main() {
  d 2
  e 2
  e 2
+ new vector:
  a 2
  b 3
  c 4
