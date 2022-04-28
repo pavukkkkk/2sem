@@ -13,42 +13,69 @@
 #include <sstream>
 using namespace std;
 
-ifstream in("input.txt");
-ofstream out("output.txt");
-
 
 int main() {
     int n;
-    cin>>n;
+    cin >> n;
     cin.get();
-    set<int> numbers;
-    string s;
-    for (int i=0;i<n;i++){
-        getline(cin, s);
-        stringstream sio(s);
-        int elem;
-                while (sio >> elem)
-                {
-                    numbers.insert(elem);
-                }
-        cout<<"chisla: ";
-        for(auto x: numbers)
-      {
-          
-              cout<<x<<" ";
-         }
-        cout<<endl;
-        numbers.clear();
-        
+    set<int> numbers1, numbers2, numbers3;
+    string s1,s2;
+    getline(cin, s1);
+    stringstream sio1(s1);
+    int elem;
+    while (sio1 >> elem)
+    {
+        if (numbers3.find(elem) == numbers3.end()) {
+            numbers1.insert(elem);
+            numbers3.insert(elem);
+        }
+        else {
+            numbers1.erase(elem);
+        }
     }
-  
+    numbers3.clear();
+    for (int i = 0; i < n-1; i++) {
+        getline(cin, s2);
+      
+        stringstream sio2(s2);
+       
+        
+        while (sio2 >> elem)
+        {
+            if (numbers3.find(elem) == numbers3.end()) {
+                numbers2.insert(elem);
+                numbers3.insert(elem);
+            }
+            else {
+                numbers2.erase(elem);
+            }
+        }
+        cout << "chisla: ";
+        for (auto x : numbers1)
+        {
+
+            if (numbers3.find(x) == numbers3.end()) {
+                cout << x << " ";
+            }
+
+        }
+        cout << endl;
+        numbers1 = numbers2;
+        numbers2.clear();
+        numbers3.clear();
+
+    }
+
     /*
-     3
-     123 3546 123 45 9845 245
-     chisla: 45 123 245 3546 9845
-     124 12 124 35 12 0 -24 33 48 -17
-     chisla: -24 -17 0 12 33 35 48 124
-     99
-     chisla: 99
+5
+123 345 67 34 345
+213 43 345 122
+chisla: 34 67 123
+123 345 67 34 345
+chisla: 43 122 213
+123 100 500 500
+chisla: 34 67
+1
+chisla: 100 123
      */
 }
