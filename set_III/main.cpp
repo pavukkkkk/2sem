@@ -49,12 +49,18 @@ int main() {
         }
 
     }
-    for (auto x : words2)
+    std::vector<string> s_intersection;
+
+    std::set_difference(words2.begin(), words2.end(),
+        words1.begin(), words1.end(),
+        std::back_inserter(s_intersection));
+    for (auto x : s_intersection)
     {
 
-        if (words1.find(x) == words1.end()) {
-            out << x << endl;
-        }
+
+        cout << x << " ";
+
+
     }
     in.close();
     out.close();
