@@ -33,13 +33,26 @@ int main() {
         }
         for(auto x: s1)
         {
-            if (s.end()==s.find(x)){
-                cout<<x<<" ";
-            }
-            
+           std::vector<int> s_intersection;
+        std::set_difference(s1.begin(), s1.end(),
+            s.begin(), s.end(),
+            std::back_inserter(s_intersection));
+        for (auto x : s_intersection)
+        {
+
+
+            cout << x << " ";
+
+
+        }
+
+
+        for (auto x : s1)
+        {
+
             s.insert(x);
         }
-        cout<<endl;
+        cout << endl;
     }
   
     return 0;
