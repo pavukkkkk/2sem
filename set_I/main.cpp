@@ -52,6 +52,7 @@ int main() {
 
             s.insert(x);
         }
+        }
         cout << endl;
     }
   
