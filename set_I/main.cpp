@@ -14,9 +14,6 @@ using namespace std;
 
 using namespace std;
 
-
-
-
 int main() {
     int n,k,number;
     
@@ -31,12 +28,10 @@ int main() {
             k/=10;
             s1.insert(number);
         }
-        for(auto x: s1)
-        {
-           std::vector<int> s_intersection;
+        std::set<int> s_intersection;
         std::set_difference(s1.begin(), s1.end(),
             s.begin(), s.end(),
-            std::back_inserter(s_intersection));
+            std::inserter(s_intersection,s_intersection.end()));
         for (auto x : s_intersection)
         {
 
@@ -51,7 +46,6 @@ int main() {
         {
 
             s.insert(x);
-        }
         }
         cout << endl;
     }

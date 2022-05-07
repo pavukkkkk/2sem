@@ -29,7 +29,8 @@ public:
         m.push_back(s);
     }
     void change(int z){
-        for_each(m.begin(), m.end(), [z](sound& a) {if (a.height<z){a.length/=2;} else if (a.height>z){a.length*=2;}
+    
+        transform(m.begin(), m.end(),m.begin(), [z](sound& a) {if (a.height<z){a.length/=2;}else if (a.height>z){a.length*=2;}  return a;
         });
     }
         

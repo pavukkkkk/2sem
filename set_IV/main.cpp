@@ -51,12 +51,12 @@ int main() {
             }
         }
         cout << "chisla: ";
-       std::vector<int> s_intersection;
+       std::set<int> s_difference;
 
         std::set_difference(numbers1.begin(), numbers1.end(),
             numbers3.begin(), numbers3.end(),
-            std::back_inserter(s_intersection));
-        for (auto x : s_intersection)
+            std::inserter(s_difference,s_difference.end()));
+        for (auto x : s_difference)
         {
 
 

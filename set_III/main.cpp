@@ -49,11 +49,11 @@ int main() {
         }
 
     }
-    std::vector<string> s_intersection;
+    std::set<string> s_intersection;
 
     std::set_difference(words2.begin(), words2.end(),
         words1.begin(), words1.end(),
-        std::back_inserter(s_intersection));
+        std::inserter(s_intersection, s_intersection.end()));
     for (auto x : s_intersection)
     {
 

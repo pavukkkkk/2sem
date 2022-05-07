@@ -18,15 +18,15 @@ class Catalog;
 
 
 class AllAboutProducer{
-    vector<string> movies;
-    vector<string> info;
+    set<string> movies;
+    set<string> info;
     friend Catalog;
 };
 
 
 class Catalog{
     std::map<string,AllAboutProducer> ctlg;
-    vector<string>::iterator iter;
+    set<string>::iterator iter;
     
 public:
     void addProducer(string a){
@@ -34,7 +34,7 @@ public:
     }
     void addMovie(string a, string b){
         if (ctlg.find(a) !=ctlg.end()){
-            ctlg[a].movies.push_back(b);
+            ctlg[a].movies.insert(b);
             
         }
         else{
@@ -63,9 +63,10 @@ public:
     }
     void changeMovie(string a, string b, string c){
         if (ctlg.find(a) !=ctlg.end()){
-        for (string &x: ctlg[a].movies){
+        for (string x: ctlg[a].movies){
             if (x==b){
-                x=c;
+                ctlg[a].movies.erase(x);
+                ctlg[a].movies.insert(c);
                 return;
             }
         }
@@ -91,7 +92,7 @@ public:
     }
     void addInfo(string a, string b){
         if (ctlg.find(a) !=ctlg.end()){
-            ctlg[a].info.push_back(b);
+            ctlg[a].info.insert(b);
             
         }
         else{
